@@ -1,0 +1,4 @@
+<select name="" id="" (change)="onChange($event.target.value)">
+  <option value="null" selected>--Elige una categoría--</option>
+  <option value="{{api.id}}" *ngFor="let api of listApis">{{ api.category }}</option>
+</select>
