@@ -7,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'TRIVIA';
+  public static API_ENDPOINT = 'https://opentdb.com/api.php?amount=10&category=';
+  public TITLE = 'TRIVIA';
+
 }

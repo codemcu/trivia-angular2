@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 
 @Component({
@@ -8,21 +8,26 @@ import { ApiService } from '../../services/api.service';
 })
 export class FilterComponent implements OnInit {
 
+  @Output() listFiltered = new EventEmitter();
+
   public listCategories: Array<any> = [];
+  public listResult: Array<any> = [];
 
   constructor( private _apis: ApiService) { }
 
   ngOnInit() {
     this.listCategories = [ ...this._apis.optionList];
-    // console.log('this._apis.apis', this._apis.apis);
   }
 
-  onChange (value: string) {
+  onChange (value: any) {
     this._apis.getApis(value).subscribe(
-      res => {
-        console.log(res);
+      (res: any) => {
+        this.listResult = res;
+        console.log('this.listResult ', this.listResult);
+        this.listFiltered.emit(this.listResult);
+        // return this.listResult;
       },
-      error => {
+      (error: any) => {
         const errorCode = JSON.parse(error.json().errorMessage).code;
       }
     );

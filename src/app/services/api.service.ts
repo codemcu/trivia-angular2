@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
+import { AppComponent } from '../app.component';
 import 'rxjs/add/operator/map';
-import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class ApiService {
@@ -16,14 +16,16 @@ export class ApiService {
       {id: 30, category: 'gadgets'},
       {id: 31, category: 'anime'}
     ];
-
-    this.urlApi = 'https://opentdb.com/api.php?amount=10&category=';
   }
 
   getApis(value: string) {
+
+    const petition = AppComponent.API_ENDPOINT;
+
     const headers = new Headers();
-    // const paramsUrl = `${value}&difficulty=easy&type=multiple`;
-    const url = `${this.urlApi}${value}`;
+    const paramsUrl = `${value}&type=multiple`;
+    const url = `${petition}${paramsUrl}`;
+    console.log('url ', url);
 
     return this._http.get(url, {headers})
       .map(res => {
