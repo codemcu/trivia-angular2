@@ -8,17 +8,24 @@ import { ApiService } from '../../services/api.service';
 })
 export class FilterComponent implements OnInit {
 
-  public listApis: Array<any> = [];
+  public listCategories: Array<any> = [];
 
   constructor( private _apis: ApiService) { }
 
   ngOnInit() {
-    this.listApis = [ ...this._apis.optionList];
+    this.listCategories = [ ...this._apis.optionList];
     // console.log('this._apis.apis', this._apis.apis);
   }
 
-  onChange (value: any) {
-    this._apis.getApis(value);
+  onChange (value: string) {
+    this._apis.getApis(value).subscribe(
+      res => {
+        console.log(res);
+      },
+      error => {
+        const errorCode = JSON.parse(error.json().errorMessage).code;
+      }
+    );
   }
 
 }
