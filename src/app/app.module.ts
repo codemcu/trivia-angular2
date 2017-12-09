@@ -8,12 +8,14 @@ import { ApiService } from './services/api.service';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { ContainerComponent } from './components/container/container.component';
+import { QuestionsComponent } from './components/questions/questions.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FilterComponent,
-    ContainerComponent
+    ContainerComponent,
+    QuestionsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-container',
@@ -7,12 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContainerComponent implements OnInit {
 
+  @Input() questions: Array<any>;
+
   constructor() { }
 
   ngOnInit() {
   }
 
-  getListResult(event: any) {
-    console.log('event', event);
+  getListResult(event: Array<any>) {
+    this.questions = [ ...event ];
+    // debugger;
+    console.log('this.questions', this.questions);
   }
 }
