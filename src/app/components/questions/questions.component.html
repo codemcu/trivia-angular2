@@ -3,10 +3,10 @@
 </div>
 
 <div *ngIf="questions && questions.length > 0">
-  <h3>{{questions[0].category}}</h3>
+  <!--<h3>{{questions[0].category}}</h3>-->
   <div *ngFor="let question of questions">
     <h5>{{ question.question}}</h5>
-    <div class="radio" *ngFor="let answer of question.incorrect_answers">
+    <div class="radio" *ngFor="let answer of question.answers">
       <label>
         <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
         {{ answer }}

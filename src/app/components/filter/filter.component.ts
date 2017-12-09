@@ -16,7 +16,7 @@ export class FilterComponent implements OnInit {
   constructor( private _apis: ApiService) { }
 
   ngOnInit() {
-    this.listCategories = [ ...this._apis.optionList];
+    this.listCategories = [ ...this._apis.optionList ];
   }
 
   onChange (value: any) {
@@ -25,7 +25,6 @@ export class FilterComponent implements OnInit {
         this.listResult = res;
         console.log('this.listResult ', this.listResult);
         this.listFiltered.emit(this.listResult);
-        // return this.listResult;
       },
       (error: any) => {
         const errorCode = JSON.parse(error.json().errorMessage).code;

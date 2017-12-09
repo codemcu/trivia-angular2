@@ -16,7 +16,5 @@ export class ContainerComponent implements OnInit {
 
   getListResult(event: Array<any>) {
     this.questions = [ ...event ];
-    // debugger;
-    console.log('this.questions', this.questions);
   }
 }
