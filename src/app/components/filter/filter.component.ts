@@ -26,9 +26,9 @@ export class FilterComponent implements OnInit {
         console.log('this.listResult ', this.listResult);
         this.listFiltered.emit(this.listResult);
       },
-      (error: any) => {
-        const errorCode = JSON.parse(error.json().errorMessage).code;
-      }
+      // (error: any) => {
+      //   const errorCode = JSON.parse(error.json().errorMessage).code;
+      // }
     );
   }
 

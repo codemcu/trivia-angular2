@@ -11,7 +11,13 @@ export class QuestionsComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit() {  }
+
+  radioCheck($event) {
+    console.log('click en el radiobutton: ' + $event.target.value);
   }
 
+  submitTrivia (form) {
+    console.log('contenido del form ' + form);
+  }
 }

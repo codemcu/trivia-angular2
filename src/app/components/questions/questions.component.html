@@ -3,14 +3,34 @@
 </div>
 
 <div *ngIf="questions && questions.length > 0">
-  <!--<h3>{{questions[0].category}}</h3>-->
-  <div *ngFor="let question of questions">
-    <h5>{{ question.question}}</h5>
-    <div class="radio" *ngFor="let answer of question.answers">
-      <label>
-        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-        {{ answer }}
-      </label>
+
+  <form #triviaForm = "ngForm" (ngSubmit)="submitTrivia(triviaForm.value)">
+
+    <div *ngFor="let question of questions">
+      <h5>{{ question.question}}</h5>
+      <h5>{{ question.correctAnswer}}</h5>
+      <div class="radio" *ngFor="let answer of question.answers; let i = index">
+        <label>
+          <input type="radio" [attr.name]="question.nameInput" [attr.value]="'value_'+i" (change)="radioCheck($event)">
+          {{ answer }}
+        </label>
+      </div>
+
+      <!--pagination-->
+      <!--<div class="col-sm-12">-->
+        <!--<div class="pull-left">-->
+          <!--<button type="button" class="btn btn-info">anterior</button>-->
+        <!--</div>-->
+        <!--<div class="pull-right">-->
+          <!--<button type="button" class="btn btn-info">siguiente</button>-->
+        <!--</div>-->
+      <!--</div>-->
     </div>
-  </div>
+    <div>
+      <!--<input class="btn btn-primary pull-right" type="submit" value="Suerte!" [disabled]="!triviaForm.submit">-->
+      <input class="btn btn-primary pull-right" type="submit" value="Suerte!">
+    </div>
+
+  </form>
+
 </div>

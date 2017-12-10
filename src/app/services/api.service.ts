@@ -45,7 +45,7 @@ export class ApiService {
         const location = Math.floor(Math.random() * arrayQuestions[0].incorrect_answers.length + 1);
         arrayQuestions[i].incorrect_answers.splice(location, 0, arrayQuestions[i].correct_answer);
         correctedQuestions.push(
-          {question: arrayQuestions[i].question, answers: arrayQuestions[i].incorrect_answers, correctAnswer: location}
+          {question: arrayQuestions[i].question, answers: arrayQuestions[i].incorrect_answers, correctAnswer: location, nameInput: 'nameInput_' + (i + 1)}
         );
       }
       this.questions = [ ...correctedQuestions ];
